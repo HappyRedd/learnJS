@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title></title>
+    <meta charset="gbk">
+    <style type="text/css">
+        #content {
+            color: red !important;;
+        }
+    </style>
+</head>
+<body>
+<div id="content" style="color:yellow;width: 10%;">content</div>
+</body>
+
+
+<script type="text/javascript">
+    var a = document.getElementById("content");
+    alert("style "+a.style.color);
+    alert("css "+window.getComputedStyle(a).getPropertyValue("color"));
+      alert("css "+window.getComputedStyle(a).getPropertyValue("width"));
+</script>
+</html>

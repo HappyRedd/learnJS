@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>获取dom外链样式</title>
+    <style>
+        .div{font:14px/22px arial;color:#666;border:10% solid #ddd;}
+    </style>
+</head>
+<body>
+<div id="div" class="div" style="background:#f2f2f2;"></div>
+<script>
+    var doc = document,
+        div = doc.getElementById('div');
+        
+    function getCurrentStyle(node) {
+        var style = null;    
+        if(window.getComputedStyle) {
+            style = window.getComputedStyle(node, null);
+            //chrome、firefox、ie9(含)+
+            console.log('globalEventContext');
+        }else{
+            style = node.currentStyle;
+            //ie7、ie8
+            console.log('currentStyel');
+        }    
+        return style;
+    }
+    console.log(getCurrentStyle(div).borderLeftWidth); //10px
+    console.log(getCurrentStyle(div).backgroundColor); //rgb(242, 242, 242) 
+function getComputed(el,op,percent){
+    let bk = window.getComputedStyle(el)[op];
+    el.style[op] = percent;
+    let ret = window.getComputedStyle(el)[op];
+    el.style[op] = bk;
+    return ret
+}
+var x=getCssValue("#div");
+//alert(x.borderWidth);
+getComputed('div',borderWidth,)
+//getComputedStyle(document.getElementById('div'),null).borderWidth;
+</script>
+</body>
+</html>
